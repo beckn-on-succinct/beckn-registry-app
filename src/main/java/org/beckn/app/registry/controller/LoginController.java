@@ -15,7 +15,7 @@ public class LoginController extends Controller {
     @RequireLogin(false)
     public View index(){
         if (ObjectUtil.equals(getPath().getRequest().getMethod(),"GET") && getSessionUser() == null &&
-                TemplateProcessor.getInstance().exists("/html/index.html")){
+                TemplateProcessor.getInstance(getTemplateDirectory()).exists("/html/index.html")){
             return new ForwardedView(getPath(),"/",
                     "html/index.html" );
         }else {
